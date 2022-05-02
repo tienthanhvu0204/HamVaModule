@@ -1,7 +1,7 @@
 import turtle
 import math
 # turtle.hideturtle ()
-turtle.speed (10)
+# turtle.speed (10)
 def rectangle (a, b, color):
     _doc_ = """vẽ hình chữ nhật cạnh a, b, tô màu color"""
     turtle.fillcolor (color)
@@ -129,19 +129,40 @@ def drawTree (a, b, c):
   turtle.bk (c/3)
   turtle.pendown ()
   drawTriangle (c/3, a/9, "#228B22")
- 
 
+def addItem (list, item):
+  __doc__ = "Thêm item vào list"
+  # name = input ("Name: ",)
+  cost = input ("Cost: ",)
+  date = input ("Date: ",)
+  tempItem = {'Name': item, 'Cost': cost, 'Date': date}
+  list.append (tempItem)
+  print ("Done.")
 
+def findItem (list, itemName):
+  result = -1
+  for i in range (len (list)):
+    if list[i]['Name'] == itemName:
+      result = i
+  return result
 
+def removeItem (list, itemName):
+  if findItem (list, itemName) == -1:
+    print (itemName, "not in list.")
+  else:
+    del list [findItem (list, itemName)]
+    print ("Done.")
 
+def modifyItem (list, item):
+  __doc__ = "Sửa item trong list"
+  # name = input ("Name: ",)
+  if findItem (list, item) == -1:
+    print (item, "not in list.")
+  else: 
+    cost = input ("Cost: ",)
+    date = input ("Date: ",)
+    tempItem = {'Name': item, 'Cost': cost, 'Date': date}
+    list [findItem (list, item)] = tempItem
+  print ("Modified.")
 
-# drawHouse (200, 100, 50)
-# turtle.bk (200)
-# drawTree (150, 50, 90)
-# turtle.hideturtle ()
-# turtle.done ()
-
-# def greeting(name):
-#   turtle.write ("Hello, " + name, )
-
-
+    
