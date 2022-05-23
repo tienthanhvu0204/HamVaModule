@@ -1,11 +1,3 @@
-def addItem (list, item):
-  __doc__ = "Thêm item vào list"
-  # name = input ("Name: ",)
-  cost = input ("Cost: ",)
-  date = input ("Date: ",)
-  tempItem = {'Name': item, 'Cost': cost, 'Date': date}
-  list.append (tempItem)
-  print ("Done.")
 
 def findItem (list, itemName):
   result = -1
@@ -14,6 +6,33 @@ def findItem (list, itemName):
       result = i
   return result
 
+def modifyItem (list, item):
+  __doc__ = "Sửa item trong list"
+  # name = input ("Name: ",)
+  if findItem (list, item) == -1:
+    print (item, "not in list.")
+  else: 
+    cost = input ("Cost: ",)
+    date = input ("Date: ",)
+    tempItem = {'Name': item, 'Cost': cost, 'Date': date}
+    list [findItem (list, item)] = tempItem
+  print ("Modified.")
+
+def addItem (list, item):
+  __doc__ = "Thêm item vào list"
+  if findItem (list, item) != -1:
+    print (item, "already exists in list.\nDo you want to modify it?")
+    option = input ("Y/N? ")
+    if option == "y" or option == "Y":
+        modifyItem (list, item)
+    else:
+        return
+  else:
+    cost = input ("Cost: ",)
+    date = input ("Date: ",)
+    tempItem = {'Name': item, 'Cost': cost, 'Date': date}
+    list.append (tempItem)
+    print ("Done.")
 def removeItem (list, itemName):
   if findItem (list, itemName) == -1:
     print (itemName, "not in list.")
