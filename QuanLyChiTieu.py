@@ -1,4 +1,25 @@
-from my_module import addItem, removeItem
+def addItem (list, item):
+  __doc__ = "Thêm item vào list"
+  # name = input ("Name: ",)
+  cost = input ("Cost: ",)
+  date = input ("Date: ",)
+  tempItem = {'Name': item, 'Cost': cost, 'Date': date}
+  list.append (tempItem)
+  print ("Done.")
+
+def findItem (list, itemName):
+  result = -1
+  for i in range (len (list)):
+    if list[i]['Name'] == itemName:
+      result = i
+  return result
+
+def removeItem (list, itemName):
+  if findItem (list, itemName) == -1:
+    print (itemName, "not in list.")
+  else:
+    del list [findItem (list, itemName)]
+    print ("Done.")
 
 # Tạo list rỗng, hỏi người dùng muốn thêm các mục chi tiêu không?
 # Nếu trả lời n/N exit, y/Y add, else: print (invalid input)
